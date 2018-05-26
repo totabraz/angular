@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+
+/**
+* Import the font Roboto from googleApi 
+*/
+// @import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
+@import url("https://fonts.googleapis.com/css?family=Rajdhani:400,700");
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// $colorPrimary :#2E9CE6;
+$colorPrimaryDarkness:#003A61;
+$colorPrimaryDark:#2885C4;
+$colorPrimaryLight:#57B3F1;
+$colorPrimary:#3FA0E1;
+$colorAccendent: #A5F883;
+body {
+    background: $colorPrimary;
+    padding: 3em;
+    font-family: 'Rajdhani', 'Arial';
+    color:#fff;
+}
+ul {
+    list-style-type:none;
+    margin:0 0 2em 0;
+    padding:0;
+}
+ul li {
+    display:inline;
+    margin-right: 30px;
+}
+ul li a {
+    font-size: 1.5em;
+}
+a {
+    color:#fff;
+    text-decoration:none;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+.col-full{
+    padding: .4em 1.3em;
+    width: 100%;
+    display: inline-block;
+}
+.container-verical{
+    display: flex;
+    flex-direction: column;
+}
+.col {
+    padding: .4em 1.3em;
+}
+
+.color-dark {
+    background: $colorPrimaryDark;
+}
+.color-light {
+    background: $colorPrimaryLight;
+}
+
+input.txt {
+    border: 0;
+    padding: 1em;
+    width: 80%;
+    margin-bottom: 2em;
+}
+input.btn {
+    border: 0;
+    display:block;
+    padding:1em 3em;
+    background:$colorAccendent;
+    color:$colorPrimaryDarkness;
+    margin-bottom:1em;
+    cursor:pointer;
+}
+.life-container {
+    background:$colorPrimary;
+    padding:.5em;
+    font-weight:bold;
+    cursor:pointer;
+}
