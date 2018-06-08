@@ -48,8 +48,13 @@ export class HomeComponent implements OnInit {
   constructor(private mData : DataService) { }
   
   ngOnInit() {
-    this.mData.films.subscribe(res => this.films = res);
-    this.mData.changeFilm(this.films)
+    this.mData.films.subscribe(res => {
+      this.films = res;
+      this.itemCount = this.films.length
+    });
+
+    // this.mData.changeFilm(this.films)
+    this.mData.addFilm(this.films)
     this.itemCount = this.films.length;
   }   
   
@@ -61,23 +66,25 @@ export class HomeComponent implements OnInit {
   addItem() {
     if (this.filmNameText != null && this.filmDurationText != null) {
       let film = new Film(this.filmNameText,this.filmDurationText)
-      this.films.push(film)
-      this.itemCount = this.films.length
-      this.mData.changeFilm(this.films)
+      // this.films.push(film)
+      // this.itemCount = this.films.length
+      // this.mData.changeFilm(this.films)
+      this.mData.addFilm(film)
       this.totalDuration += film.duration;
-      this.mData.totalDuratition  = this.totalDuration
+      this.mData.totalDuration  = this.totalDuration
       this.resetInputs()
-      console.log(this.mData.totalDuratition)
+      console.log(this.mData.totalDuration)
       
     }
   }
   
   removeItem(i){
     this.totalDuration -= this.films[i].duration;
-    this.mData.totalDuratition  = this.totalDuration
+    this.mData.totalDuration  = this.totalDuration
     this.films.splice(i,1)
     this.itemCount = this.films.length
-    this.mData.changeFilm(this.films)
+    // this.mData.changeFilm(this.films)
+    this.mData.addFilm(this.films)
   }
   
 }

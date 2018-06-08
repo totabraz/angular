@@ -21,7 +21,8 @@ export class AboutComponent implements OnInit {
   
   ngOnInit() {
     this.mData.films.subscribe(res => this.films = res)
-    console.log(this.mData.totalDuratition)
+    // console.log(this.mData.totalDuratition)
+    console.log(this.mData.totalDuration)
     console.log(this.mData.films)
   }
   

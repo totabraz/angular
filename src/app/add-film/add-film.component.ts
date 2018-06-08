@@ -48,7 +48,8 @@ export class AddFilmComponent implements OnInit {
   
   ngOnInit() {
     this.mData.films.subscribe(res => this.films = res);
-    this.mData.changeFilm(this.films)
+    // this.mData.changeFilm(this.films)
+    this.mData.addFilm(this.films)
     this.itemCount = this.films.length;
   }   
   
@@ -67,7 +68,8 @@ export class AddFilmComponent implements OnInit {
       film.duration = this.filmDurationText
       this.films.push(film)
       this.itemCount = this.films.length
-      this.mData.changeFilm(this.films)
+      // this.mData.changeFilm(this.films)
+      this.mData.addFilm(this.films)
       this.totalDuration += film.duration;
       this.resetInputs()
     }
@@ -77,7 +79,8 @@ export class AddFilmComponent implements OnInit {
     this.totalDuration -= this.films[i].duration;
     this.films.splice(i,1)
     this.itemCount = this.films.length
-    this.mData.changeFilm(this.films)
+    // this.mData.changeFilm(this.films)
+    this.mData.addFilm(this.films)
   }
   
 }

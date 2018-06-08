@@ -6,10 +6,13 @@ class Film{
 }
 @Injectable()
 export class DataService {
-  texte: Film = new Film("asadk", 0)
+  text: Film = new Film("asadk", 0)
+
+  filmSet: Film[] = []
 
   private _films = new BehaviorSubject<any>([])
   films = this._films.asObservable()
+
   totalDuration: number
   // _value: number
   // private _totalDuratition = new BehaviorSubject<number>(this._value)
@@ -19,6 +22,11 @@ export class DataService {
   
   changeFilm(films) {
     this._films.next(films);
+  }
+
+  addFilm(film: Film){
+    this.filmSet.push(film);
+    this._films.next(this.filmSet);
   }
 
   // updateTime(addTime=0, plus=false){
