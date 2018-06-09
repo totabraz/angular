@@ -18,7 +18,9 @@ export class DataService {
   // private _totalDuratition = new BehaviorSubject<number>(this._value)
   // totalDuratition = this._totalDuratition.asObservable
 
-  constructor() { }
+  constructor() {
+    console.log('constructor')
+  }
   
   changeFilm(films) {
     this._films.next(films);

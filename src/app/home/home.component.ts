@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations'
 import { DataService } from "../data.service";
+import { Subscription } from 'rxjs/Subscription';
 
 class Film{
   constructor( public name:string, public duration:number){}
@@ -35,7 +36,7 @@ class Film{
   ]
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   
   itemCount: number;
   btnText: string = "Add filme";
@@ -43,20 +44,25 @@ export class HomeComponent implements OnInit {
   filmDurationText: number = null
   totalDuration: number = 0
   films: Film[]
+  sub: Subscription
   
   
   constructor(private mData : DataService) { }
   
   ngOnInit() {
-    this.mData.films.subscribe(res => {
+    this.sub = this.mData.films.subscribe(res => {
       this.films = res;
       this.itemCount = this.films.length
     });
 
     // this.mData.changeFilm(this.films)
-    this.mData.addFilm(this.films)
-    this.itemCount = this.films.length;
+    //this.mData.addFilm(this.films)
+    //this.itemCount = this.films.length;
   }   
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
   
   private resetInputs(){
     this.filmNameText = null
